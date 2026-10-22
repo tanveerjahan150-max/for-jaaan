@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Jaan ♡</title>
+<style>
+:root{--gold:#e4c580;--bg:#090909;--cream:#f8ecd5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:Georgia,serif;min-height:100vh}
+#stars{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.spark{position:absolute;color:var(--gold);animation:float 8s linear infinite;opacity:0}
+@keyframes float{0%{transform:translateY(105vh) rotate(0);opacity:0}15%{opacity:.8}85%{opacity:.5}100%{transform:translateY(-10vh) rotate(240deg);opacity:0}}
+main{position:relative;z-index:1;width:min(90%,440px);margin:auto;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:35px 0}
+.screen{display:none;text-align:center;animation:appear .7s ease}
+.screen.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow{font:10px Arial,sans-serif;letter-spacing:4px;color:var(--gold);text-transform:uppercase}
+h1{font-size:clamp(32px,9vw,43px);font-weight:normal;line-height:1.2;margin:20px 0}
+.gold{color:var(--gold)}
+p{font-size:15px;line-height:1.8;color:#d2c6b1}
+.envelope{font-size:76px;margin:24px auto;animation:pulse 2s infinite;filter:drop-shadow(0 0 20px #d5ae6555)}
+@keyframes pulse{50%{transform:scale(1.07);filter:drop-shadow(0 0 30px #d5ae6577)}}
+button{font:14px Georgia,serif;cursor:pointer;transition:.25s}
+.primary{width:100%;padding:16px;background:linear-gradient(120deg,#f1dba6,#b18b49);border:0;border-radius:5px;color:#171109;font-weight:bold;margin-top:18px}
+.primary:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.choice{display:block;width:100%;padding:15px;margin:10px 0;text-align:left;background:#ffffff06;border:1px solid #645333;border-radius:7px;color:var(--cream)}
+.choice:hover,.choice.selected{border-color:var(--gold);background:#dfbd791b}
+textarea{width:100%;min-height:100px;margin:12px 0;padding:14px;background:#ffffff08;border:1px solid #645333;border-radius:7px;color:var(--cream);font:15px Georgia,serif;resize:vertical}
+textarea:focus{outline:1px solid var(--gold)}
+.small{font:11px Arial,sans-serif;color:#aa9c83}
+.letter{padding:20px;border:1px solid #76603b;border-radius:8px;background:linear-gradient(145deg,#19150f,#0b0a09)}
+.heart{font-size:48px;animation:pulse 1.5s infinite}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+<main>
+
+<section class="screen active" id="s0">
+<div class="eyebrow">A little something for you</div>
+<div class="envelope">✉️</div>
+<h1>For you,<br><span class="gold">my favourite person.</span></h1>
+<p>I've prepared a tiny little experience just for you, jaan. No pressure, no wrong answers. Just you being you. 🤍</p>
+<button class="primary" onclick="go(1)">OPEN YOUR SURPRISE ✨</button>
+<p class="small">Made with a little too much love.</p>
+</section>
+
+<section class="screen" id="s1">
+<div class="eyebrow">01 / A little question</div>
+<h1>Choose your <span class="gold">perfect surprise.</span> 🤭</h1>
+<div id="q1">
+<button class="choice" onclick="pick(this,'q1','Something pretty I can wear')">Something pretty I can wear ✨</button>
+<button class="choice" onclick="pick(this,'q1','Something cute to keep')">Something cute to keep 🧸</button>
+<button class="choice" onclick="pick(this,'q1','Something sweet to eat')">Something sweet to eat 🍫</button>
+<button class="choice" onclick="pick(this,'q1','A little unexpected surprise')">A little unexpected surprise 🎁</button>
+</div>
+<button class="primary" onclick="go(2)">NEXT →</button>
+</section>
+
+<section class="screen" id="s2">
+<div class="eyebrow">02 / Your kind of pretty</div>
+<h1>Pick the vibe that feels <span class="gold">most YOU.</span></h1>
+<div id="q2">
+<button class="choice" onclick="pick(this,'q2','Elegant and classy')">Elegant and classy 🥂</button>
+<button class="choice" onclick="pick(this,'q2','Cute and adorable')">Cute and adorable 🎀</button>
+<button class="choice" onclick="pick(this,'q2','Simple and meaningful')">Simple and meaningful 💌</button>
+<button class="choice" onclick="pick(this,'q2','Unique and unexpected')">Unique and unexpected 🦋</button>
+</div>
+<button class="primary" onclick="go(3)">NEXT →</button>
+</section>
+
+<section class="screen" id="s3">
+<div class="eyebrow">03 / Hypothetically, of course 👀</div>
+<h1>What's inside your <span class="gold">dream gift box?</span></h1>
+<div id="q3">
+<button class="choice" onclick="pick(this,'q3','A necklace, ring or earrings')">A necklace, ring or earrings 💍</button>
+<button class="choice" onclick="pick(this,'q3','A cute accessory or room decor')">A cute accessory or room decor 🎀</button>
+<button class="choice" onclick="pick(this,'q3','Chocolates and little treats')">Chocolates and little treats 🍫</button>
+<button class="choice" onclick="pick(this,'q3','A handwritten letter or handmade gift')">A handwritten letter or handmade gift 💌</button>
+</div>
+<button class="primary" onclick="go(4)">NEXT →</button>
+</section>
+
+<section class="screen" id="s4">
+<div class="eyebrow">04 / Tell me something</div>
+<h1>Ever seen something and thought <span class="gold">“I WANT THAT!”</span> 😭</h1>
+<p>Anything you've wanted for a while but never got. Big, tiny, or completely random.</p>
+<textarea id="wish" placeholder="Tell me your little wish... 🤍"></textarea>
+<button class="primary" onclick="go(5)">NEXT →</button>
+<button class="choice" onclick="go(5)">I'd rather skip this one 🤍</button>
+</section>
+
+<section class="screen" id="s5">
+<div class="eyebrow">05 / The little details</div>
+<h1>Choose your <span class="gold">jewellery vibe.</span> ✨</h1>
+<div id="q5">
+<button class="choice" onclick="pick(this,'q5','Silver and delicate')">Silver and delicate 🌙</button>
+<button class="choice" onclick="pick(this,'q5','Gold and elegant')">Gold and elegant ✨</button>
+<button class="choice" onclick="pick(this,'q5','Rose gold and pretty')">Rose gold and pretty 🌸</button>
+<button class="choice" onclick="pick(this,'q5','Cute colourful or crystal designs')">Cute, colourful or crystal designs 💎</button>
+</div>
+<button class="primary" onclick="go(6)">NEXT →</button>
+</section>
+
+<section class="screen" id="s6">
+<div class="eyebrow">06 / A little luxury</div>
+<h1>Choose something that would make you <span class="gold">smile.</span> 🥂</h1>
+<div id="q6">
+<button class="choice" onclick="pick(this,'q6','A beautiful outfit and accessories')">A beautiful outfit and accessories 👗</button>
+<button class="choice" onclick="pick(this,'q6','Flowers chocolates and a letter')">Flowers, chocolates and a letter 🌹</button>
+<button class="choice" onclick="pick(this,'q6','A surprise I have never experienced')">A surprise I've never experienced 🎁</button>
+<button class="choice" onclick="pick(this,'q6','Something thoughtful and personal')">Something thoughtful and personal 💗</button>
+</div>
+<button class="primary" onclick="go(7)">NEXT →</button>
+</section>
+
+<section class="screen" id="s7">
+<div class="eyebrow">07 / One honest question</div>
+<h1>What makes a gift <span class="gold">special to you?</span></h1>
+<div id="q7">
+<button class="choice" onclick="pick(this,'q7','The thought behind it')">The thought behind it 🥹</button>
+<button class="choice" onclick="pick(this,'q7','Something I really wanted')">Something I really wanted 👀</button>
+<button class="choice" onclick="pick(this,'q7','The memories attached to it')">The memories attached to it 💗</button>
+<button class="choice" onclick="pick(this,'q7','The effort and surprise')">The effort and surprise 🎀</button>
+</div>
+<button class="primary" onclick="go(8)">ONE LAST QUESTION… 👀</button>
+</section>
+
+<section class="screen" id="s8">
+<div class="eyebrow">Just between us</div>
+<div class="envelope">✧</div>
+<h1>Jaan, can I ask you <span class="gold">one last thing?</span></h1>
+<p>What's one thing your heart secretly wishes for? Something you've wanted for a long time but never told me about? 💌</p>
+<p class="small">Big or small. There's no wrong answer. You can skip it too.</p>
+<textarea id="secret" placeholder="Tell me your little wish... 🤍"></textarea>
+<button class="primary" onclick="finish()">REVEAL YOUR SURPRISE ✨</button>
+<button class="choice" onclick="finish()">I'd rather keep it a secret 🤍</button>
+</section>
+
+<section class="screen" id="s9">
+<div class="eyebrow">A little truth from my heart</div>
+<div class="heart gold">♡</div>
+<h1>One last thing, <span class="gold">jaan…</span></h1>
+<div class="letter">
+<p>You always say you don't need anything, and that's okay. I never want you to feel like you have to ask me for something.</p>
+<p>I just wanted to know the little things that make you happy, the things you secretly love, and the dreams you want to experience.</p>
+<p class="gold">Because making you smile matters to me. And you deserve to be heard, too. 💗</p>
+<p>— Yours, with love. 💌</p>
+</div>
+<p class="small">You make ordinary things feel special.</p>
+</section>
+
+</main>
+<script>
+const answers={};
+function go(n){
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById('s'+n).classList.add('active');
+window.scrollTo({top:0,behavior:'smooth'});
+}
+function pick(btn,key,value){
+answers[key]=value;
+btn.parentElement.querySelectorAll('.choice').forEach(b=>b.classList.remove('selected'));
+btn.classList.add('selected');
+}
+function finish(){
+answers.wish=document.getElementById('wish').value.trim();
+answers.secret=document.getElementById('secret').value.trim();
+go(9);
+}
+const stars=document.getElementById('stars');
+for(let i=0;i<30;i++){
+const s=document.createElement('span');
+s.className='spark';
+s.textContent=Math.random()>.5?'✦':'·';
+s.style.left=Math.random()*100+'%';
+s.style.animationDelay=Math.random()*8+'s';
+s.style.animationDuration=(6+Math.random()*8)+'s';
+s.style.fontSize=(10+Math.random()*15)+'px';
+stars.appendChild(s);
+}
+</script>
+</body>
+</html>
